@@ -1,0 +1,22 @@
+📄 connect-ec2.sh
+#!/bin/bash
+
+# Conexión a EC2 pública (bastion)
+ssh -i "Mi app 1.pem" ubuntu@<EC2_PUBLIC_IP>
+
+# Desde bastion → backend
+ssh ubuntu@<EC2_PRIVATE_IP>
+📄 connect-rds.sh
+#!/bin/bash
+
+mysql -h <RDS_ENDPOINT> -u jorge -p"$(aws secretsmanager get-secret-value \
+--secret-id '<SECRET_ARN>' \
+--query SecretString --output text | jq -r '.password')" \
+--ssl-mode=VERIFY_IDENTITY --ssl-ca=./global-bundle.pem
+📄 setup-nginx.sh
+#!/bin/bash
+
+sudo apt update
+sudo apt install -y nginx
+sudo systemctl start nginx
+sudo systemctl enable nginx
