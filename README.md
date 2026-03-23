@@ -16,7 +16,7 @@ Imagina que eres un arquitecto cloud en una startup de e-commerce. Necesitas que
 
 ## 📊 Arquitectura
 
-![Architecture Diagram](./diagrams/architecture.png)
+![Architecture Diagram](./diagrams/redes-aws.png)
 
 **Explicación de los elementos:**
 
